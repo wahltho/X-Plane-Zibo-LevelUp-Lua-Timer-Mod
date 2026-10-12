@@ -22,7 +22,10 @@ paying cache overhead. Unknown helper implementations are rejected.
 
 This is deliberately narrower than the original Timer Mod. An isolated
 benchmark is not a simulator FPS result. Flight and performance validation
-in X-Plane remains open; this package has not been published.
+in X-Plane remains open. The first release is **0.1.0-beta.1**; it is intended
+for testing, without a promised FPS improvement.
+
+Latest release: https://github.com/wahltho/X-Plane-Zibo-LevelUp-Lua-Timer-Mod/releases/latest
 
 ## Installation
 
@@ -40,12 +43,16 @@ The installer preserves line endings, UTF-8 BOM, file permissions and unrelated
 edits. Its private receipt and original backups are kept under
 `.patch-ownership/wahltho.zibo-levelup-737ng.lua-timer/`. Do not delete these.
 
-The schema-3 MTK package and catalog templates are prepared for a future
-optional, initially unselected module. They are not in the public catalog yet.
-MTK 0.28.2 or newer is required for the tested ownership checks. Publish its
-catalog policy before distributing either installation package.
-The catalog files in this repository are integration templates, not a live
-catalog or an installation offer. No downloadable release is available yet.
+MTK is the recommended installation path when you use other MTK patches.
+Use MTK 0.28.2 or newer, select your aircraft and review its patch group.
+Select **Lua Timer Mod (Beta)** under the optional patches, then apply your
+selection. It is available for Zibo and LevelUp and is not selected by default.
+Restart MTK if it was open while the new catalog was published.
+
+The same release ZIP contains the standalone installer and the schema-3 MTK
+source package. The `catalog/` files are integration templates, not a second
+installer. Beta appears in the version and display name. The GitHub release
+uses the regular release feed so existing MTK clients can discover it.
 
 Use one manager for files shared with other patches. The standalone installer
 blocks an overlapping MTK installation; MTK blocks an unowned or standalone
@@ -56,7 +63,9 @@ this installer does not guess which `.bak` is safe.
 
 ## Development
 
-`python3 tools/build_package.py` regenerates the local manifest and inventory.
+`python3 tools/build_package.py --version 0.1.0-beta.1` regenerates the local
+manifest and inventory. `python3 tools/build_release.py` builds the release
+ZIP and checksums from an explicit file list.
 Updates must explicitly list previously supported helper hashes. Do not upload
 test-only versions used by the lifecycle tests.
 

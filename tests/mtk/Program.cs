@@ -66,7 +66,8 @@ await Check("archive-adapter-schema3-and-unselected-module",async()=>{
   }
  }
  var archiveBytes=bytes.ToArray();var source=catalog.Packages.Single(p=>p.PackageId=="wahltho.zibo-levelup-737ng.lua-timer");var group=catalog.Packages.Single(p=>p.PackageId=="wahltho.zibo-40535.maintenance");var member=group.Members.Single(m=>m.ModuleId=="lua-timer");
- var release=new ContentPatchRelease("0.1.0-dev.1",source.RepositoryUrl+"/releases/tag/0.1.0-dev.1","X-Plane-Zibo-LevelUp-Lua-Timer-Mod-v0.1.0-dev.1.zip",source.RepositoryUrl+"/releases/download/0.1.0-dev.1/X-Plane-Zibo-LevelUp-Lua-Timer-Mod-v0.1.0-dev.1.zip",archiveBytes.Length,Hash(archiveBytes));
+ var version=CompatibilityPackageLoader.LoadDirectory(package1).Manifest.PackageVersion;var tag="v"+version;var asset="X-Plane-Zibo-LevelUp-Lua-Timer-Mod-"+tag+".zip";
+ var release=new ContentPatchRelease(tag,source.RepositoryUrl+"/releases/tag/"+tag,asset,source.RepositoryUrl+"/releases/download/"+tag+"/"+asset,archiveBytes.Length,Hash(archiveBytes));
  using var client=new HttpClient(new ArchiveHandler(archiveBytes));var adapter=new GitHubContentPatchReleaseSource(client,Path.Combine(root,"adapter-cache"));
  var result=await adapter.ProvisionGroupAsync(new(group,[(member,source,release)],"catalog-timer-test"));
  var reloaded=CompatibilityPackageLoader.LoadDirectory(result.PackageDirectory);

@@ -26,14 +26,19 @@ def prepare():
     ART.mkdir(exist_ok=True)
     catalog = json.loads((mtk / 'catalog/content-package-catalog.json').read_text())
     member = json.loads((ROOT / 'catalog/group-member.json').read_text())
-    catalog['packages'].append(json.loads((ROOT / 'catalog/package-entry.json').read_text()))
-    catalog['ownershipPolicies'].append(json.loads((ROOT / 'catalog/ownership-policy.json').read_text()))
+    if not any(entry['packageId'] == member['packageId'] for entry in catalog['packages']):
+        catalog['packages'].append(json.loads((ROOT / 'catalog/package-entry.json').read_text()))
+    policy = json.loads((ROOT / 'catalog/ownership-policy.json').read_text())
+    if not any(entry['packageId'] == member['packageId'] for entry in catalog['ownershipPolicies']):
+        catalog['ownershipPolicies'].append(policy)
     for entry in catalog['packages']:
         if entry['packageId'] in ('wahltho.zibo-40535.maintenance', 'wahltho.levelup-737ng.maintenance'):
-            entry['members'].append(member)
+            if not any(item['moduleId'] == member['moduleId'] for item in entry['members']):
+                entry['members'].append(member)
     dump(ART / 'dev-catalog.json', catalog)
     helper_hash = hashlib.sha256((ROOT / 'modules/lua-timer/payload/B738.wahltho_timer.lua').read_bytes()).hexdigest()
-    for suffix, version in (('v1', '0.1.0-dev.1'), ('v2', '0.1.0-dev.2')):
+    release_version = json.loads((ROOT / 'package-manifest.json').read_text())['packageVersion']
+    for suffix, version in (('v1', release_version), ('v2', release_version + '-test.2')):
         output = ART / ('package-' + suffix)
         if output.exists():
             shutil.rmtree(output)

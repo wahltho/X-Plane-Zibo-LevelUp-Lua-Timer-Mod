@@ -2,7 +2,7 @@
   "schemaVersion": 3,
   "packageType": "compatibilityPackage",
   "packageId": "wahltho.zibo-levelup-737ng.lua-timer",
-  "packageVersion": "0.1.0-dev.1",
+  "packageVersion": "0.1.0-beta.1",
   "repositoryUrl": "https://github.com/wahltho/X-Plane-Zibo-LevelUp-Lua-Timer-Mod",
   "aircraftFamily": "Zibo / LevelUp 737NG",
   "supportedProducts": [
@@ -14,7 +14,7 @@
   "modules": [
     {
       "moduleId": "lua-timer",
-      "displayName": "Lua Timer Mod (experimental)",
+      "displayName": "Lua Timer Mod (Beta)",
       "description": "Exact-input, short-lived cache for two pure FMS geometry helpers; physics callbacks are unchanged.",
       "policy": "optional",
       "defaultEnabled": false,

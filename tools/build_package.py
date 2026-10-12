@@ -9,11 +9,11 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_ID = "wahltho.zibo-levelup-737ng.lua-timer"
 
 
-def build(version="0.1.0-dev.1", previous_hashes=()):
+def build(version="0.1.0-beta.1", previous_hashes=()):
     payloads = ["patches/load.json", "patches/distance.json", "patches/bearing.json", "payload/B738.wahltho_timer.lua"]
     def sha(relative):
         return hashlib.sha256((ROOT / "modules/lua-timer" / relative).read_bytes()).hexdigest()
-    module = dict(moduleId="lua-timer", displayName="Lua Timer Mod (experimental)",
+    module = dict(moduleId="lua-timer", displayName="Lua Timer Mod (Beta)",
                   description="Exact-input, short-lived cache for two pure FMS geometry helpers; physics callbacks are unchanged.",
                   policy="optional", defaultEnabled=False, installationOrder=90,
                   supportedUpstreamReleases=[], requires=[], conflictsWith=[],
@@ -38,7 +38,7 @@ def build(version="0.1.0-dev.1", previous_hashes=()):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--version", default="0.1.0-dev.1")
+    parser.add_argument("--version", default="0.1.0-beta.1")
     parser.add_argument("--previous-helper-sha256", action="append", default=[])
     args = parser.parse_args()
     build(args.version, args.previous_helper_sha256)

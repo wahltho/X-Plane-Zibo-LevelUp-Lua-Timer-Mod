@@ -26,7 +26,7 @@ silently skip the integration matrix.
 | Variable | Input |
 | --- | --- |
 | `TIMER_PROJECT_ROOT` | Absolute path to this checkout |
-| `TIMER_MTK_CHECKOUT` | MTK checkout with the tested catalog 1.19.0 |
+| `TIMER_MTK_CHECKOUT` | MTK checkout with the current catalog |
 | `TIMER_PACKAGE_EVIDENCE` | Verified group cache; `inputs/zibo-737ng-group-path.txt` and `inputs/levelup-737ng-group-path.txt` contain absolute paths to provisioned groups |
 | `TIMER_ZIBO_AIRCRAFT` | Zibo 4.05.35 fixture, with aircraft files and original Lua scripts |
 | `TIMER_LEVELUP_AIRCRAFT` | LevelUp fixture, with aircraft files and objects matching its group manifest |
@@ -48,9 +48,10 @@ dotnet run --project tests/mtk/Probe.csproj
 
 The C# project references the released MTK 0.28.2 DLL. It tests the actual
 public Core, with a local catalog containing the proposed ownership policy.
-The public catalog is unchanged. Test version 2 changes the cache lifetime and
-helper hash; it is an actual payload update, not a same-version repeat. Both
-development versions are test inputs and must not be released.
+The local test catalog does not change the public catalog. Version 1 uses the
+checked-in release version. Test version 2 changes the cache lifetime and helper
+hash; it is an actual payload update, not a same-version repeat. That second
+version is a test input and must not be released.
 
 The matrix covers both products with every current patch selected, adding the
 Timer module before and after existing managed patches, repeats, Repair,
