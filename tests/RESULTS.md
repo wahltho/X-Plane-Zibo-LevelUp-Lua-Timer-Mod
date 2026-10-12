@@ -52,3 +52,21 @@ Machine-readable results and source hashes are retained locally in
 logs are excluded from the repository. The public MTK catalog and existing
 patch repositories were not changed. Catalog policy publication is required
 before distributing this new optional patch.
+
+## Repository preparation recheck
+
+The test runners now take their external paths from environment variables.
+After that change, all 19 standalone tests, 54,434 Lua assertions and both
+35-assertion native callback suites passed again. The complete 19-case MTK
+matrix then passed in one fresh run with zero failures, including both
+products' module selection, helper-version update, Restore and rollback.
+This fresh run does not depend on combining earlier partial runs.
+
+The source package inventory, payload hashes and catalog templates were
+checked again. GitHub Actions also passed its package-integrity and Lua
+runtime checks on Linux. No aircraft fixtures or compiled libraries were
+pushed, and no release or public catalog change was made. Simulator flight
+and performance validation remain open.
+
+Fresh local lifecycle evidence:
+`artifacts/mtk-run-0e4cf8162a944984a16917f4262de506/logs/results.json`.
