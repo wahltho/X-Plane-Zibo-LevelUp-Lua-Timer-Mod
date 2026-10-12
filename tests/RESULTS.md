@@ -70,3 +70,29 @@ and performance validation remain open.
 
 Fresh local lifecycle evidence:
 `artifacts/mtk-run-0e4cf8162a944984a16917f4262de506/logs/results.json`.
+
+## First Beta release verification
+
+The release package is now `0.1.0-beta.1`. The four Lua/patch payloads and the
+standalone installer logic are unchanged from the verified development build.
+The test preparation uses the checked-in release version and a separate,
+unpublished helper update to exercise the upgrade path.
+
+Before publication, all 19 standalone tests, 54,434 Lua assertions and both
+35-assertion native callback suites passed again. All 19 MTK lifecycle cases
+also passed in one fresh run against released Core 0.28.2.0, with the local
+test catalog based on catalog 1.20.0 plus the Timer ownership policy. This
+includes both products, the existing patch groups, genuine helper updates,
+Repair, selection changes, byte-exact Restore and rollback after writes.
+
+Fresh lifecycle evidence: `artifacts/mtk-run-a9e34b2d04d74550a9ff3ce07b757647/logs/results.json`.
+
+The release ZIP has 15 explicitly listed files. Its manifest, payload sizes
+and SHA-256 values were verified, and two builds produced identical archives.
+The final MTK catalog and UI tests passed: 852 tests, with six local platform
+skips; CI passed on Linux, Windows and macOS, including the applicable
+platform checks. The ownership policy was published in catalog 1.21.0 before
+the patch was made available. Catalog 1.22.0 adds its optional group entries.
+
+Simulator flight behaviour and FPS validation remain open. This is a Beta
+release without a promised performance gain.
