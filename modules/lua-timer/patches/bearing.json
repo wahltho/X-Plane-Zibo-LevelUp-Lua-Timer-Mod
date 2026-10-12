@@ -1,0 +1,34 @@
+{
+  "format": "insert-marked-block-v1",
+  "name": "BEARING",
+  "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER BEARING",
+  "endMarker": "-- END WAHLTHO_LUA_TIMER BEARING",
+  "anchorLines": [
+    "function nd_calc_brg(req_lat, req_lon, req_lat2, req_lon2)",
+    "\t",
+    "\tlocal nd_lat = math.rad(req_lat)",
+    "\tlocal nd_lon = math.rad(req_lon)",
+    "\t",
+    "\tlocal nd_lat2 = math.rad(req_lat2)",
+    "\tlocal nd_lon2 = math.rad(req_lon2)",
+    "\t",
+    "\tlocal nd_y = math.sin(nd_lon2 - nd_lon) * math.cos(nd_lat2)",
+    "\tlocal nd_x = math.cos(nd_lat) * math.sin(nd_lat2) - math.sin(nd_lat) * math.cos(nd_lat2) * math.cos(nd_lon2 - nd_lon)",
+    "\tlocal nd_hdg = math.atan2(nd_y, nd_x)",
+    "\tnd_hdg = math.deg(nd_hdg)",
+    "\tnd_hdg = (nd_hdg + 360) % 360",
+    "\t",
+    "\treturn nd_hdg",
+    "\t",
+    "end"
+  ],
+  "position": "after",
+  "contentLines": [
+    "if wahltho_timer_cache ~= nil then",
+    "    nd_calc_brg = wahltho_timer_cache.wrap4(nd_calc_brg, function() return B738DR_wahltho_timer_clock end,",
+    "        function(original, wrapper)",
+    "            if nd_calc_brg == wrapper then nd_calc_brg = original end",
+    "        end)",
+    "end"
+  ]
+}

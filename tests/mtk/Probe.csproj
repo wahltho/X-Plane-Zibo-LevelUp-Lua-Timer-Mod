@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LevelUp.NavTableUpdater.Core">
+      <HintPath>$(TIMER_MTK_CORE_DLL)</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="RequireReleasedCore" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(TIMER_MTK_CORE_DLL)' == '' Or !Exists('$(TIMER_MTK_CORE_DLL)')"
+           Text="Set TIMER_MTK_CORE_DLL to the released MTK 0.28.2 Core DLL; see tests/README.md." />
+  </Target>
+</Project>

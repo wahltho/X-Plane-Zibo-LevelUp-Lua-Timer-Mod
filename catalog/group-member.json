@@ -1,0 +1,9 @@
+{
+  "packageId": "wahltho.zibo-levelup-737ng.lua-timer",
+  "moduleId": "lua-timer",
+  "policy": "optional",
+  "installationOrder": 90,
+  "sourceFormat": "compatibility",
+  "manifestPath": "package-manifest.json",
+  "assetNamePattern": "X-Plane-Zibo-LevelUp-Lua-Timer-Mod-v*.zip"
+}

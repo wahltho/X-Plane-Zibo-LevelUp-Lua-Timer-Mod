@@ -1,0 +1,21 @@
+{
+  "format": "insert-marked-block-v1",
+  "name": "LOAD",
+  "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER LOAD",
+  "endMarker": "-- END WAHLTHO_LUA_TIMER LOAD",
+  "anchorLines": [
+    "jit.off()"
+  ],
+  "position": "after",
+  "contentLines": [
+    "raw_table(\"B738_wahltho_timer_module\")",
+    "B738_wahltho_timer_module = nil",
+    "local wahltho_timer_loaded = pcall(dofile, \"B738.wahltho_timer.lua\")",
+    "local wahltho_timer_cache = B738_wahltho_timer_module",
+    "if not wahltho_timer_loaded or type(wahltho_timer_cache) ~= \"table\" or type(wahltho_timer_cache.wrap4) ~= \"function\" then",
+    "    wahltho_timer_cache = nil",
+    "    print(\"Independent Lua Timer Mod inactive: helper could not be loaded\")",
+    "end",
+    "B738DR_wahltho_timer_clock = find_dataref(\"sim/time/total_running_time_sec\")"
+  ]
+}

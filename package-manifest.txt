@@ -1,0 +1,10 @@
+package|id|wahltho.zibo-levelup-737ng.lua-timer
+package|version|0.1.0-dev.1
+payload|input|modules/lua-timer/patches/load.json|size|824|sha256|cdb1ac7bbfe541bb645b7afd8c5ab1878ba092b310a248d5007cc00f1830a64b
+payload|input|modules/lua-timer/patches/distance.json|size|1147|sha256|3b0789a69e77f7f45cd4f6ffde92d69c14102ba5a1a523dc163e99bfe487e3a0
+payload|input|modules/lua-timer/patches/bearing.json|size|1184|sha256|67d1e875b51c3d41fed1f0deebfad84114a127c0f88ff9ce320a83bf40e80af5
+payload|input|modules/lua-timer/payload/B738.wahltho_timer.lua|size|2064|sha256|95096d0a476fbb33f793290e2762c69187ce86894ec4723549c78362713eb64f
+payload|input|z_Install.py|size|4781|sha256|34523d5589860357e5cadb6b8f91cad268ca1970db439ee2c0c5ef02da8c101e
+payload|input|standalone_guard.py|size|32820|sha256|f93f6c5d6768e394bbb1b6b4e838a74af9f1630473ef4eb71a9b385c54c00e2c
+payload|input|standalone-ownership.json|size|2444|sha256|4529b07863a4b49e47d2be34f2693dabc1b3d4dc2ac1f07eb34fa11db3130fad
+payload|input|package-manifest.json|size|2658|sha256|66cf0b9194f6ab5561cecc3981ffe5e9daf663bcca24b965ced661e19cdff98a

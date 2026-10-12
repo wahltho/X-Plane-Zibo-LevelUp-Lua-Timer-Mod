@@ -1,0 +1,66 @@
+{
+  "packageId": "wahltho.zibo-levelup-737ng.lua-timer",
+  "displayName": "Lua Timer Mod (experimental)",
+  "repositoryUrl": "https://github.com/wahltho/X-Plane-Zibo-LevelUp-Lua-Timer-Mod",
+  "supportedProducts": [
+    "zibo-737ng",
+    "levelup-737ng"
+  ],
+  "moduleIds": [
+    "lua-timer"
+  ],
+  "targetPaths": [
+    "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.wahltho_timer.lua"
+  ],
+  "standaloneEvidencePaths": [
+    ".patch-ownership/wahltho.zibo-levelup-737ng.lua-timer/receipt.json",
+    ".patch-ownership/wahltho.zibo-levelup-737ng.lua-timer.lock",
+    ".patch-ownership/wahltho.zibo-levelup-737ng.lua-timer/transaction"
+  ],
+  "payloadPaths": [
+    "plugins/xlua/scripts/B738.a_fms/B738.wahltho_timer.lua"
+  ],
+  "markerNamespaces": [
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "namespace": "WAHLTHO_LUA_TIMER",
+      "blocks": [
+        {
+          "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER LOAD",
+          "endMarker": "-- END WAHLTHO_LUA_TIMER LOAD"
+        },
+        {
+          "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER DISTANCE",
+          "endMarker": "-- END WAHLTHO_LUA_TIMER DISTANCE"
+        },
+        {
+          "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER BEARING",
+          "endMarker": "-- END WAHLTHO_LUA_TIMER BEARING"
+        }
+      ],
+      "allowedCommentLines": []
+    }
+  ],
+  "signatures": [
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "text": "function timed_before_physics("
+    },
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "text": "function timed_after_physics("
+    },
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "text": "run_at_interval(timed_before_physics"
+    },
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "text": "run_at_interval(timed_after_physics"
+    }
+  ],
+  "resultFiles": [],
+  "originalFiles": [],
+  "recoveryInstruction": "Use the installer which owns the current patch to uninstall it first. Retain its receipt and backups. Legacy Timer Mod callback changes must be restored from verified originals before using this package. Do not delete state or backup files."
+}

@@ -1,0 +1,31 @@
+{
+  "format": "insert-marked-block-v1",
+  "name": "DISTANCE",
+  "beginMarker": "-- BEGIN WAHLTHO_LUA_TIMER DISTANCE",
+  "endMarker": "-- END WAHLTHO_LUA_TIMER DISTANCE",
+  "anchorLines": [
+    "function nd_calc_dist2(req_lat, req_lon, req_lat2, req_lon2)",
+    "\t",
+    "\tlocal nd_lat = math.rad(req_lat)",
+    "\tlocal nd_lat2 = math.rad(req_lat2)",
+    "\t",
+    "\tlocal nd_dlat = math.rad(req_lat2-req_lat)",
+    "\tlocal nd_dlon = math.rad(req_lon2-req_lon)",
+    "\t",
+    "\tlocal nd_a = math.sin(nd_dlat/2)*math.sin(nd_dlat/2)+math.cos(nd_lat)*math.cos(nd_lat2)*math.sin(nd_dlon/2)*math.sin(nd_dlon/2)",
+    "\tlocal nd_b = 2 * math.atan2(math.sqrt(nd_a), math.sqrt(1-nd_a))",
+    "\tlocal nd_dis = nd_b * 3440.064795\t--nm",
+    "\t",
+    "\treturn nd_dis",
+    "end"
+  ],
+  "position": "after",
+  "contentLines": [
+    "if wahltho_timer_cache ~= nil then",
+    "    nd_calc_dist2 = wahltho_timer_cache.wrap4(nd_calc_dist2, function() return B738DR_wahltho_timer_clock end,",
+    "        function(original, wrapper)",
+    "            if nd_calc_dist2 == wrapper then nd_calc_dist2 = original end",
+    "        end)",
+    "end"
+  ]
+}

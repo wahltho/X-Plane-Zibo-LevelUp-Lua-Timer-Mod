@@ -1,0 +1,18 @@
+[
+  {
+    "functionName": "nd_calc_dist2",
+    "normalizedSha256": "e077fbac49300a8b6ca895eb2a2c5b554f39624b10793f0dd0f88efd1756c034",
+    "reads": "Four numeric arguments and standard math functions only",
+    "writes": "Return value only",
+    "sourceFile": "Zibo 4.05.35 / LevelUp fixture",
+    "sourceLines": 19702
+  },
+  {
+    "functionName": "nd_calc_brg",
+    "normalizedSha256": "937a70f3d01fa6af5624ac8df474eb23842ca0b5e7902566d88e994aa8c2581e",
+    "reads": "Four numeric arguments and standard math functions only",
+    "writes": "Return value only",
+    "sourceFile": "Zibo 4.05.35 / LevelUp fixture",
+    "sourceLines": 19729
+  }
+]

@@ -1,0 +1,39 @@
+name: Verify source package
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-and-lua:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check Python syntax
+        run: python3 -m compileall -q z_Install.py standalone_guard.py tools tests/test_installer.py
+      - name: Verify checked-in package inventory
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from standalone_guard import verify_text_manifest
+          from z_Install import PACKAGE_ID
+          print(verify_text_manifest(Path.cwd(), PACKAGE_ID))
+          PY
+      - name: Install LuaJIT for the standalone runtime tests
+        run: sudo apt-get update && sudo apt-get install -y luajit
+      - name: Test exact outputs, cache lifetime and loader hooks
+        env:
+          TIMER_PROJECT_ROOT: ${{ github.workspace }}
+        run: |
+          python3 tools/prepare_runtime_tests.py
+          luajit tests/runtime.lua
+      - name: Check whitespace
+        run: git diff-tree --check --root HEAD
